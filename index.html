@@ -1,0 +1,701 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2113.6">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+    p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'PingFang SC'}
+    span.s1 {font: 12.0px 'Apple Color Emoji'}
+    span.s2 {font: 12.0px 'Lucida Grande'}
+    span.s3 {font: 12.0px Helvetica}
+    span.s4 {font: 12.0px 'Apple Symbols'}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="fr"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1">&lt;meta charset="UTF-8"/&gt;</p>
+<p class="p1">&lt;meta name="viewport" content="width=device-width,initial-scale=1.0"/&gt;</p>
+<p class="p1">&lt;title&gt;Hub Veille — Sécurité Routière&lt;/title&gt;</p>
+<p class="p1">&lt;link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/&gt;</p>
+<p class="p1">&lt;style&gt;</p>
+<p class="p1">*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}</p>
+<p class="p1">:root{</p>
+<p class="p1"><span class="Apple-converted-space">  </span>--blue:#003189;--blue-light:#e8edf7;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>--red:#e1000f;--red-soft:#fde8ea;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>--white:#fff;--g0:#f5f6fa;--g1:#e8e9ef;--g2:#b0b3c6;--g3:#6b6f8a;--g4:#2d3050;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>--gold:#d4a017;--green:#00826b;--green-s:#d9f5f0;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>--sh:0 1px 3px rgba(0,49,137,.08),0 1px 2px rgba(0,49,137,.04);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>--shm:0 4px 16px rgba(0,49,137,.10),0 2px 6px rgba(0,49,137,.06);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>--shl:0 12px 40px rgba(0,49,137,.14);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>--r:6px;--rm:12px;--tr:.2s cubic-bezier(.4,0,.2,1);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>--f:'Inter',system-ui,sans-serif;</p>
+<p class="p1">}</p>
+<p class="p1">html{font-size:16px;scroll-behavior:smooth}</p>
+<p class="p1">body{font-family:var(--f);background:var(--g0);color:var(--g4);min-height:100vh;line-height:1.6}</p>
+<p class="p2"><br></p>
+<p class="p1">/* TOPBAR */</p>
+<p class="p1">.topbar{background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 2rem;height:46px;font-size:.76rem}</p>
+<p class="p1">.tb-l{display:flex;align-items:center;gap:.9rem}</p>
+<p class="p1">.flag{display:flex;gap:2px;overflow:hidden;border-radius:2px}</p>
+<p class="p1">.flag span{display:block;width:10px;height:16px}</p>
+<p class="p1">.fb{background:#002395}.fw{background:#fff}.fr{background:#ED2939}</p>
+<p class="p1">.tb-brand{font-weight:600;letter-spacing:.01em}</p>
+<p class="p1">.tb-r{opacity:.65;font-size:.7rem}</p>
+<p class="p2"><br></p>
+<p class="p1">/* HEADER */</p>
+<p class="p1">header{background:linear-gradient(135deg,#001a5e 0%,#002d85 45%,#0041a8 100%);color:#fff;padding:2.8rem 2rem 2.4rem;position:relative;overflow:hidden}</p>
+<p class="p1">header::after{content:'';position:absolute;right:-80px;top:-80px;width:350px;height:350px;border-radius:50%;background:rgba(255,255,255,.03);pointer-events:none}</p>
+<p class="p1">.hi{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:2rem}</p>
+<p class="p1">.hl{flex:1}</p>
+<p class="p1">.eyebrow{display:inline-flex;align-items:center;gap:.42rem;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:100px;padding:.24rem .82rem;font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.9rem}</p>
+<p class="p1">.dot-live{width:7px;height:7px;background:#4ade80;border-radius:50%;animation:lp 2s ease-in-out infinite}</p>
+<p class="p1">@keyframes lp{0%,100%{opacity:1}50%{opacity:.3}}</p>
+<p class="p1">header h1{font-size:2rem;font-weight:700;line-height:1.15;margin-bottom:.65rem;letter-spacing:-.02em}</p>
+<p class="p1">header h1 span{color:#93c5fd}</p>
+<p class="p1">header p{font-size:.88rem;opacity:.8;max-width:480px;line-height:1.75}</p>
+<p class="p1">.hstats{display:flex;gap:.9rem;margin-top:1.5rem;flex-wrap:wrap}</p>
+<p class="p1">.spill{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.14);border-radius:10px;padding:.55rem 1rem;text-align:center}</p>
+<p class="p1">.spill strong{display:block;font-size:1.4rem;font-weight:700}</p>
+<p class="p1">.spill small{font-size:.64rem;opacity:.66;text-transform:uppercase;letter-spacing:.05em}</p>
+<p class="p1">.hemb{flex-shrink:0;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.14);border-radius:var(--rm);padding:1.2rem 1.5rem;text-align:center;display:flex;flex-direction:column;align-items:center;gap:.55rem}</p>
+<p class="p1">.eico{width:58px;height:58px;background:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.75rem}</p>
+<p class="p1">.elbl{font-size:.66rem;opacity:.68;line-height:1.5;max-width:100px}</p>
+<p class="p2"><br></p>
+<p class="p1">/* NAVBAR */</p>
+<p class="p1">.navbar{background:var(--white);border-bottom:2px solid var(--g1);position:sticky;top:0;z-index:100;box-shadow:var(--sh)}</p>
+<p class="p1">.ni{max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:.32rem;padding:0 2rem;overflow-x:auto;scrollbar-width:none;height:52px}</p>
+<p class="p1">.ni::-webkit-scrollbar{display:none}</p>
+<p class="p1">.nb{flex-shrink:0;display:flex;align-items:center;gap:.4rem;padding:.4rem .92rem;border-radius:100px;border:none;background:transparent;font-family:var(--f);font-size:.81rem;font-weight:500;color:var(--g3);cursor:pointer;transition:var(--tr);white-space:nowrap}</p>
+<p class="p1">.nb:hover{background:var(--g0);color:var(--blue)}</p>
+<p class="p1">.nb.active{background:var(--blue);color:#fff}</p>
+<p class="p1">.nc{border-radius:100px;padding:.04rem .4rem;font-size:.65rem;font-weight:700}</p>
+<p class="p1">.nb.active .nc{background:rgba(255,255,255,.22)}</p>
+<p class="p1">.nb:not(.active) .nc{background:var(--g1);color:var(--g3)}</p>
+<p class="p2"><br></p>
+<p class="p1">/* MAIN */</p>
+<p class="p1">main{max-width:1280px;margin:1.8rem auto;padding:0 2rem 5rem;display:grid;grid-template-columns:1fr 320px;gap:1.8rem;align-items:start}</p>
+<p class="p1">@media(max-width:900px){</p>
+<p class="p1"><span class="Apple-converted-space">  </span>main{grid-template-columns:1fr}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.sidebar,.hemb{display:none}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>header{padding:2rem 1.2rem}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>header h1{font-size:1.5rem}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>main{padding:0 1rem 3rem;margin:1rem auto}</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">/* TOOLBAR */</p>
+<p class="p1">.toolbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.2rem;gap:.8rem;flex-wrap:wrap}</p>
+<p class="p1">.tb-ll{display:flex;align-items:center;gap:.65rem}</p>
+<p class="p1">.tb-title{font-size:1rem;font-weight:700;color:var(--g4)}</p>
+<p class="p1">.tb-cnt{background:var(--blue-light);color:var(--blue);font-size:.72rem;font-weight:700;padding:.16rem .56rem;border-radius:100px}</p>
+<p class="p1">.tb-rr{display:flex;gap:.48rem;align-items:center;flex-wrap:wrap}</p>
+<p class="p1">.sw{position:relative}</p>
+<p class="p1">.si{position:absolute;left:.76rem;top:50%;transform:translateY(-50%);color:var(--g2);font-size:.86rem;pointer-events:none}</p>
+<p class="p1">.srch{padding:.48rem .88rem .48rem 2.2rem;border:1.5px solid var(--g1);border-radius:100px;font-family:var(--f);font-size:.81rem;color:var(--g4);background:var(--white);outline:none;width:220px;transition:var(--tr)}</p>
+<p class="p1">.srch:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(0,49,137,.09);width:265px}</p>
+<p class="p1">.btn{display:inline-flex;align-items:center;gap:.4rem;background:var(--blue);color:#fff;border:none;border-radius:100px;padding:.48rem 1.1rem;font-family:var(--f);font-size:.81rem;font-weight:700;cursor:pointer;transition:var(--tr);flex-shrink:0}</p>
+<p class="p1">.btn:hover{background:#0041a8;transform:translateY(-1px);box-shadow:var(--shm)}</p>
+<p class="p1">.btn:active{transform:translateY(0)}</p>
+<p class="p1">.btn:disabled{opacity:.5;cursor:not-allowed;transform:none;box-shadow:none}</p>
+<p class="p1">.spin{animation:sp 1s linear infinite;display:inline-block}</p>
+<p class="p1">@keyframes sp{to{transform:rotate(360deg)}}</p>
+<p class="p2"><br></p>
+<p class="p1">/* CARDS */</p>
+<p class="p1">.cg{display:flex;flex-direction:column;gap:.9rem}</p>
+<p class="p1">.card{background:var(--white);border-radius:var(--rm);border:1.5px solid var(--g1);padding:1.3rem 1.45rem 1.3rem 1.65rem;box-shadow:var(--sh);transition:var(--tr);position:relative;overflow:hidden;animation:fu .38s ease both}</p>
+<p class="p1">.card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--blue);border-radius:4px 0 0 4px}</p>
+<p class="p1">.card[data-cat="Campagne"]::before{background:var(--red)}</p>
+<p class="p1">.card[data-cat="Statistiques"]::before{background:var(--green)}</p>
+<p class="p1">.card[data-cat="Réglementation"]::before{background:var(--gold)}</p>
+<p class="p1">.card[data-cat="International"]::before{background:#7c3aed}</p>
+<p class="p1">.card[data-cat="Prévention"]::before{background:#0891b2}</p>
+<p class="p1">.card:hover{box-shadow:var(--shm);border-color:var(--g2);transform:translateY(-2px)}</p>
+<p class="p1">@keyframes fu{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}</p>
+<p class="p1">.ctop{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;margin-bottom:.68rem}</p>
+<p class="p1">.bdgs{display:flex;align-items:center;gap:.4rem;flex-wrap:wrap}</p>
+<p class="p1">.badge{display:inline-flex;align-items:center;gap:.25rem;font-size:.67rem;font-weight:700;padding:.17rem .6rem;border-radius:100px;text-transform:uppercase;letter-spacing:.04em}</p>
+<p class="p1">.ba{background:var(--blue-light);color:var(--blue)}</p>
+<p class="p1">.bc{background:var(--red-soft);color:var(--red)}</p>
+<p class="p1">.bs{background:var(--green-s);color:var(--green)}</p>
+<p class="p1">.br{background:#fef9c3;color:#92400e}</p>
+<p class="p1">.bi{background:#ede9fe;color:#5b21b6}</p>
+<p class="p1">.bp{background:#e0f2fe;color:#0369a1}</p>
+<p class="p1">.bsrc{background:var(--g0);color:var(--g3);border:1px solid var(--g1);font-weight:500}</p>
+<p class="p1">.cdt{font-size:.68rem;color:var(--g2);white-space:nowrap;margin-top:.06rem}</p>
+<p class="p1">.cttl{font-size:.97rem;font-weight:700;color:var(--g4);margin-bottom:.5rem;line-height:1.4}</p>
+<p class="p1">.csum{font-size:.85rem;color:var(--g3);line-height:1.7;margin-bottom:.88rem}</p>
+<p class="p1">.cft{display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--g0);padding-top:.66rem;gap:1rem}</p>
+<p class="p1">.sch{display:flex;align-items:center;gap:.36rem;font-size:.75rem;color:var(--g3)}</p>
+<p class="p1">.sch strong{color:var(--g4);font-weight:600}</p>
+<p class="p1">.rel{display:flex;align-items:center;gap:.26rem;font-size:.67rem;font-weight:700;margin-top:.2rem}</p>
+<p class="p1">.rd{width:7px;height:7px;border-radius:50%}</p>
+<p class="p1">.rh{color:var(--green)}.rh .rd{background:var(--green)}</p>
+<p class="p1">.rm2{color:var(--gold)}.rm2 .rd{background:var(--gold)}</p>
+<p class="p1">.clink{display:inline-flex;align-items:center;gap:.3rem;font-size:.77rem;font-weight:700;color:var(--blue);text-decoration:none;padding:.28rem .8rem;border-radius:100px;border:1.5px solid var(--blue-light);transition:var(--tr);white-space:nowrap}</p>
+<p class="p1">.clink:hover{background:var(--blue);color:#fff;border-color:var(--blue)}</p>
+<p class="p1">.clink.dis{opacity:.36;pointer-events:none}</p>
+<p class="p2"><br></p>
+<p class="p1">/* FEATURED */</p>
+<p class="p1">.cf{background:linear-gradient(140deg,#001d6e 0%,var(--blue) 100%);color:#fff;border-color:var(--blue)}</p>
+<p class="p1">.cf::before{background:rgba(255,255,255,.32)}</p>
+<p class="p1">.cf .cttl{color:#fff;font-size:1.08rem}</p>
+<p class="p1">.cf .csum{color:rgba(255,255,255,.8)}</p>
+<p class="p1">.cf .cdt{color:rgba(255,255,255,.5)}</p>
+<p class="p1">.cf .ba,.cf .bc,.cf .bs,.cf .br,.cf .bi,.cf .bp{background:rgba(255,255,255,.16);color:#fff}</p>
+<p class="p1">.cf .bsrc{background:rgba(255,255,255,.1);color:rgba(255,255,255,.76);border-color:rgba(255,255,255,.16)}</p>
+<p class="p1">.cf .cft{border-color:rgba(255,255,255,.13)}</p>
+<p class="p1">.cf .sch{color:rgba(255,255,255,.65)}.cf .sch strong{color:#fff}</p>
+<p class="p1">.cf .clink{color:#fff;border-color:rgba(255,255,255,.26)}.cf .clink:hover{background:rgba(255,255,255,.18)}</p>
+<p class="p1">.cf .rh{color:#86efac}.cf .rh .rd{background:#4ade80}</p>
+<p class="p1">.fbadge{display:inline-flex;align-items:center;gap:.3rem;background:rgba(255,255,255,.17);border:1px solid rgba(255,255,255,.26);border-radius:100px;padding:.17rem .65rem;font-size:.66rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.6rem}</p>
+<p class="p2"><br></p>
+<p class="p1">/* SKELETON */</p>
+<p class="p1">.sk{background:linear-gradient(90deg,var(--g1) 25%,#eff0f5 50%,var(--g1) 75%);background-size:200% 100%;animation:sh 1.5s infinite;border-radius:6px}</p>
+<p class="p1">@keyframes sh{to{background-position:-200% 0}}</p>
+<p class="p1">.skc{background:var(--white);border-radius:var(--rm);border:1.5px solid var(--g1);padding:1.3rem 1.45rem}</p>
+<p class="p2"><br></p>
+<p class="p1">/* LOADING */</p>
+<p class="p1">.lwrap{display:flex;flex-direction:column;align-items:center;padding:2rem;gap:.8rem}</p>
+<p class="p1">.dots{display:flex;gap:.36rem}</p>
+<p class="p1">.dots span{width:9px;height:9px;background:var(--blue);border-radius:50%;animation:dt .9s ease-in-out infinite}</p>
+<p class="p1">.dots span:nth-child(2){animation-delay:.18s}.dots span:nth-child(3){animation-delay:.36s}</p>
+<p class="p1">@keyframes dt{0%,80%,100%{transform:scale(.65);opacity:.28}40%{transform:scale(1.2);opacity:1}}</p>
+<p class="p1">.lmsg{font-size:.85rem;color:var(--g3)}</p>
+<p class="p2"><br></p>
+<p class="p1">/* EMPTY / ERROR */</p>
+<p class="p1">.empty{text-align:center;padding:4rem 2rem}</p>
+<p class="p1">.ei{font-size:3rem;opacity:.3;margin-bottom:.9rem}</p>
+<p class="p1">.et{font-size:.97rem;font-weight:700;color:var(--g4);margin-bottom:.4rem}</p>
+<p class="p1">.es{font-size:.82rem;color:var(--g3)}</p>
+<p class="p1">.err{background:#fef2f2;border:1.5px solid #fca5a5;border-radius:var(--r);padding:1rem 1.2rem;color:#991b1b;font-size:.82rem;margin-bottom:1rem;line-height:1.65}</p>
+<p class="p2"><br></p>
+<p class="p1">/* API NOTICE */</p>
+<p class="p1">.apn{background:linear-gradient(135deg,#fffbeb,#fef3c7);border:1.5px solid #f59e0b;border-radius:var(--rm);padding:1.25rem 1.45rem;margin-bottom:1.35rem}</p>
+<p class="p1">.apn h3{font-size:.92rem;font-weight:700;color:#92400e;margin-bottom:.42rem}</p>
+<p class="p1">.apn p{font-size:.79rem;color:#78350f;margin-bottom:.85rem;line-height:1.65}</p>
+<p class="p1">.apr{display:flex;gap:.46rem}</p>
+<p class="p1">.api-in{flex:1;padding:.46rem .86rem;border:1.5px solid #f59e0b;border-radius:var(--r);font-family:var(--f);font-size:.81rem;outline:none;background:#fff}</p>
+<p class="p1">.api-in:focus{border-color:#d97706;box-shadow:0 0 0 3px rgba(217,119,6,.12)}</p>
+<p class="p1">.api-btn{padding:.46rem 1rem;background:#d97706;color:#fff;border:none;border-radius:var(--r);font-family:var(--f);font-size:.81rem;font-weight:700;cursor:pointer;transition:var(--tr)}</p>
+<p class="p1">.api-btn:hover{background:#b45309}</p>
+<p class="p2"><br></p>
+<p class="p1">/* SIDEBAR */</p>
+<p class="p1">.sidebar{display:flex;flex-direction:column;gap:1.1rem}</p>
+<p class="p1">.widget{background:var(--white);border-radius:var(--rm);border:1.5px solid var(--g1);overflow:hidden;box-shadow:var(--sh)}</p>
+<p class="p1">.wh{padding:.8rem 1.1rem;background:var(--g0);border-bottom:1px solid var(--g1);font-size:.7rem;font-weight:700;color:var(--g4);text-transform:uppercase;letter-spacing:.07em;display:flex;align-items:center;gap:.4em}</p>
+<p class="p1">.wb{padding:.92rem 1.1rem}</p>
+<p class="p1">.sl{list-style:none}</p>
+<p class="p1">.sl li{display:flex;align-items:center;justify-content:space-between;padding:.46rem 0;border-bottom:1px solid var(--g0);font-size:.77rem}</p>
+<p class="p1">.sl li:last-child{border:none}</p>
+<p class="p1">.sn{font-weight:500;color:var(--g4);display:flex;align-items:center;gap:.36rem}</p>
+<p class="p1">.sdot{width:6px;height:6px;border-radius:50%;background:var(--green);flex-shrink:0}</p>
+<p class="p1">.stag{font-size:.63rem;padding:.09rem .38rem;border-radius:100px;background:var(--g0);color:var(--g3);border:1px solid var(--g1);font-weight:500}</p>
+<p class="p1">.swg{display:grid;grid-template-columns:1fr 1fr;gap:.5rem}</p>
+<p class="p1">.swb{background:var(--g0);border-radius:var(--r);padding:.65rem .8rem;text-align:center}</p>
+<p class="p1">.swv{font-size:1.42rem;font-weight:700;color:var(--blue)}</p>
+<p class="p1">.swl{font-size:.65rem;color:var(--g3);margin-top:.07rem}</p>
+<p class="p1">.wfoot{padding:.56rem 1.1rem;background:var(--g0);border-top:1px solid var(--g1);font-size:.7rem;color:var(--g3);display:flex;align-items:center;gap:.36rem}</p>
+<p class="p1">.wfd{width:6px;height:6px;border-radius:50%;background:var(--green)}</p>
+<p class="p1">.disc{background:#fffbeb;border:1px solid #fde68a;border-radius:var(--r);padding:.86rem .98rem;font-size:.73rem;color:#92400e;line-height:1.65}</p>
+<p class="p1">.disc strong{display:block;margin-bottom:.26rem}</p>
+<p class="p2"><br></p>
+<p class="p1">/* FOOTER */</p>
+<p class="p1">footer{background:var(--g4);color:rgba(255,255,255,.56);text-align:center;padding:1.4rem 2rem;font-size:.73rem;line-height:1.9}</p>
+<p class="p1">footer strong{color:rgba(255,255,255,.9)}</p>
+<p class="p2"><br></p>
+<p class="p1">/* TOAST */</p>
+<p class="p1">.toast{position:fixed;bottom:2rem;right:2rem;background:var(--g4);color:#fff;padding:.7rem 1.1rem;border-radius:var(--r);font-size:.81rem;font-weight:500;box-shadow:var(--shl);z-index:9999;animation:fu .3s ease;max-width:320px}</p>
+<p class="p1">&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;!-- TOPBAR --&gt;</p>
+<p class="p1">&lt;div class="topbar"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="tb-l"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="flag"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;span class="fb"&gt;&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;span class="fw"&gt;&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;span class="fr"&gt;&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;span class="tb-brand"&gt;Délégation à la Sécurité Routière — Outil de Veille Informationnelle&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="tb-r"&gt;Usage interne · Confidentiel&lt;/div&gt;</p>
+<p class="p1">&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;!-- HEADER --&gt;</p>
+<p class="p1">&lt;header&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="hi"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="hl"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="eyebrow"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;span class="dot-live"&gt;&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>Veille active — Temps réel</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;h1&gt;Hub Sécurité&lt;br/&gt;&lt;span&gt;Routière&lt;/span&gt;&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;p&gt;Agrégation intelligente des actualités, campagnes et données officielles. Sources institutionnelles uniquement — droits d'auteur respectés, sources toujours citées.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="hstats"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="spill"&gt;&lt;strong&gt;12+&lt;/strong&gt;&lt;small&gt;Sources&lt;/small&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="spill"&gt;&lt;strong id="art-count"&gt;0&lt;/strong&gt;&lt;small&gt;Articles&lt;/small&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="spill"&gt;&lt;strong id="last-sync"&gt;—&lt;/strong&gt;&lt;small&gt;Synchro&lt;/small&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="hemb"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="eico"&gt;<span class="s1">🛡️</span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="elbl"&gt;Délégation à la Sécurité Routière&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p1">&lt;/header&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;!-- NAVBAR --&gt;</p>
+<p class="p1">&lt;nav class="navbar"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="ni"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;button class="nb active" onclick="filterCat('Tous')" id="nav-tous"&gt;<span class="s1">🗂</span> Tous &lt;span class="nc" id="nc-tous"&gt;0&lt;/span&gt;&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;button class="nb" onclick="filterCat('Actualité')" id="nav-actu"&gt;<span class="s1">📰</span> Actualité &lt;span class="nc" id="nc-actu"&gt;0&lt;/span&gt;&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;button class="nb" onclick="filterCat('Campagne')" id="nav-camp"&gt;<span class="s1">📢</span> Campagnes &lt;span class="nc" id="nc-camp"&gt;0&lt;/span&gt;&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;button class="nb" onclick="filterCat('Statistiques')" id="nav-stat"&gt;<span class="s1">📊</span> Statistiques &lt;span class="nc" id="nc-stat"&gt;0&lt;/span&gt;&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;button class="nb" onclick="filterCat('Réglementation')" id="nav-regl"&gt;<span class="s1">⚖️</span> Réglementation &lt;span class="nc" id="nc-regl"&gt;0&lt;/span&gt;&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;button class="nb" onclick="filterCat('Prévention')" id="nav-prev"&gt;<span class="s1">🎗</span> Prévention &lt;span class="nc" id="nc-prev"&gt;0&lt;/span&gt;&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;button class="nb" onclick="filterCat('International')" id="nav-intl"&gt;<span class="s1">🌍</span> International &lt;span class="nc" id="nc-intl"&gt;0&lt;/span&gt;&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p1">&lt;/nav&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;!-- MAIN --&gt;</p>
+<p class="p1">&lt;main&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- API KEY --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="apn" id="apiNotice"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;h3&gt;<span class="s1">🔑</span> Clé API Anthropic requise&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;p&gt;Ce hub utilise Claude AI + recherche web en temps réel. Saisissez votre clé API Anthropic pour activer la collecte automatique d'actualités vérifiées. Elle sera mémorisée dans votre navigateur.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="apr"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;input type="password" id="apiKeyInput" class="api-in" placeholder="sk-ant-api03-..."/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;button class="api-btn" onclick="saveApiKey()"&gt;<span class="s2">✓</span> Activer&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- TOOLBAR --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="toolbar"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="tb-ll"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;span class="tb-title" id="toolbar-title"&gt;Fil d'information&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;span class="tb-cnt" id="toolbar-count"&gt;0 article(s)&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="tb-rr"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="sw"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;span class="si"&gt;<span class="s1">🔍</span>&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;input type="text" id="searchInput" class="srch" placeholder="Rechercher…" oninput="filterSearch()"/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;button class="btn" id="fetchBtn" onclick="fetchNews()"&gt;<span class="s1">⚡</span> Actualiser le fil&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- CONTENT --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="contentArea"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="empty"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="ei"&gt;<span class="s1">📡</span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="et"&gt;Hub prêt à collecter&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="es"&gt;Entrez votre clé API puis cliquez sur &lt;strong&gt;Actualiser le fil&lt;/strong&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;!-- SIDEBAR --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;aside class="sidebar"&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="widget"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="wh"&gt;<span class="s1">📌</span> Sources référencées&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="wb"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;ul class="sl"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;li&gt;&lt;span class="sn"&gt;&lt;span class="sdot"&gt;&lt;/span&gt;securite-routiere.gouv.fr&lt;/span&gt;&lt;span class="stag"&gt;Officiel&lt;/span&gt;&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;li&gt;&lt;span class="sn"&gt;&lt;span class="sdot"&gt;&lt;/span&gt;ONISR&lt;/span&gt;&lt;span class="stag"&gt;Stats&lt;/span&gt;&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;li&gt;&lt;span class="sn"&gt;&lt;span class="sdot"&gt;&lt;/span&gt;Prévention Routière&lt;/span&gt;&lt;span class="stag"&gt;ONG&lt;/span&gt;&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;li&gt;&lt;span class="sn"&gt;&lt;span class="sdot"&gt;&lt;/span&gt;Legifrance&lt;/span&gt;&lt;span class="stag"&gt;Juridique&lt;/span&gt;&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;li&gt;&lt;span class="sn"&gt;&lt;span class="sdot" style="background:#7c3aed"&gt;&lt;/span&gt;WHO / OMS&lt;/span&gt;&lt;span class="stag"&gt;Intl&lt;/span&gt;&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;li&gt;&lt;span class="sn"&gt;&lt;span class="sdot" style="background:#0891b2"&gt;&lt;/span&gt;ETSC Europe&lt;/span&gt;&lt;span class="stag"&gt;EU&lt;/span&gt;&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;li&gt;&lt;span class="sn"&gt;&lt;span class="sdot"&gt;&lt;/span&gt;Cerema&lt;/span&gt;&lt;span class="stag"&gt;Technique&lt;/span&gt;&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;li&gt;&lt;span class="sn"&gt;&lt;span class="sdot"&gt;&lt;/span&gt;AFP / France Info&lt;/span&gt;&lt;span class="stag"&gt;Presse&lt;/span&gt;&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="wfoot"&gt;&lt;span class="wfd"&gt;&lt;/span&gt;Sources institutionnelles uniquement&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="widget"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="wh"&gt;<span class="s1">📈</span> Tableau de bord&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="wb"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="swg"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="swb"&gt;&lt;div class="swv" id="sw-actu"&gt;0&lt;/div&gt;&lt;div class="swl"&gt;Actualités&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="swb"&gt;&lt;div class="swv" id="sw-camp" style="color:var(--red)"&gt;0&lt;/div&gt;&lt;div class="swl"&gt;Campagnes&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="swb"&gt;&lt;div class="swv" id="sw-stat" style="color:var(--green)"&gt;0&lt;/div&gt;&lt;div class="swl"&gt;Statistiques&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="swb"&gt;&lt;div class="swv" id="sw-regl" style="color:var(--gold)"&gt;0&lt;/div&gt;&lt;div class="swl"&gt;Réglementation&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="disc"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;strong&gt;<span class="s1">⚖️</span> Politique éditoriale&lt;/strong&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>Extraits courts uniquement · Lien source systématique · Aucune donnée inventée · Sources non vérifiées exclues automatiquement</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="widget"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="wh"&gt;<span class="s1">🤖</span> Moteur IA&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="wb" style="font-size:.74rem;color:var(--g3);line-height:1.78"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>Propulsé par &lt;strong style="color:var(--g4)"&gt;Claude (Anthropic)&lt;/strong&gt; avec recherche web temps réel.&lt;br/&gt;&lt;br/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>Classification thématique, évaluation de fiabilité et résumé éditorial générés automatiquement.&lt;br/&gt;&lt;br/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div style="display:flex;flex-direction:column;gap:.26rem"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;span style="color:var(--green);font-weight:600"&gt;<span class="s2">✓</span> Droits d'auteur respectés&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;span style="color:var(--green);font-weight:600"&gt;<span class="s2">✓</span> Source originale citée&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;span style="color:var(--green);font-weight:600"&gt;<span class="s2">✓</span> Extraits courts uniquement&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;span style="color:var(--green);font-weight:600"&gt;<span class="s2">✓</span> Aucune donnée inventée&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/aside&gt;</p>
+<p class="p1">&lt;/main&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;!-- FOOTER --&gt;</p>
+<p class="p1">&lt;footer&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;strong&gt;Hub Veille Sécurité Routière&lt;/strong&gt; — Usage interne&lt;br/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>Délégation à la Sécurité Routière · Propulsé par Claude AI + Recherche Web en temps réel&lt;br/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>Résumés éditoriaux courts · Lien source systématique · Droits d'auteur respectés</p>
+<p class="p1">&lt;/footer&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;script&gt;</p>
+<p class="p3"><span class="s3">/* </span>═══════════════════════════════════════</p>
+<p class="p1"><span class="Apple-converted-space">   </span>ÉTAT GLOBAL</p>
+<p class="p3">═══════════════════════════════════════<span class="s3"> */</span></p>
+<p class="p1">let API_KEY = '';</p>
+<p class="p1">let allArticles = [];</p>
+<p class="p1">let currentCat = 'Tous';</p>
+<p class="p1">const today = new Date().toLocaleDateString('fr-FR', {day:'numeric', month:'long', year:'numeric'});</p>
+<p class="p2"><br></p>
+<p class="p3"><span class="s3">/* </span>═══════════════════════════════════════</p>
+<p class="p1"><span class="Apple-converted-space">   </span>CLÉ API</p>
+<p class="p3">═══════════════════════════════════════<span class="s3"> */</span></p>
+<p class="p1">function saveApiKey() {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const v = document.getElementById('apiKeyInput').value.trim();</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if (!v.startsWith('sk-ant-')) {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>toast('<span class="s1">⚠️</span> Clé invalide — elle doit commencer par sk-ant-');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>return;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>API_KEY = v;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>try { localStorage.setItem('dsr_hub_key', v); } catch(e) {}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById('apiNotice').style.display = 'none';</p>
+<p class="p1"><span class="Apple-converted-space">  </span>toast('<span class="s1">✅</span> Clé activée — hub opérationnel');</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">// Initialisation au chargement</p>
+<p class="p1">(function init() {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>try {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const k = localStorage.getItem('dsr_hub_key');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>if (k) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>API_KEY = k;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>document.getElementById('apiKeyInput').value = k;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (k.startsWith('sk-ant-')) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('apiNotice').style.display = 'none';</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>} catch(e) {}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById('last-sync').textContent = 'Jamais';</p>
+<p class="p1">})();</p>
+<p class="p2"><br></p>
+<p class="p3"><span class="s3">/* </span>═══════════════════════════════════════</p>
+<p class="p1"><span class="Apple-converted-space">   </span>COLLECTE VIA CLAUDE API + WEB SEARCH</p>
+<p class="p3">═══════════════════════════════════════<span class="s3"> */</span></p>
+<p class="p1">async function fetchNews() {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if (!API_KEY || !API_KEY.startsWith('sk-ant-')) {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById('apiNotice').style.display = 'block';</p>
+<p class="p1"><span class="Apple-converted-space">    </span>toast('<span class="s1">⚠️</span> Clé API requise');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>return;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>const btn = document.getElementById('fetchBtn');</p>
+<p class="p1"><span class="Apple-converted-space">  </span>btn.disabled = true;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>btn.innerHTML = '&lt;span class="spin"&gt;<span class="s4">⟳</span>&lt;/span&gt; Collecte en cours…';</p>
+<p class="p1"><span class="Apple-converted-space">  </span>showSkeleton();</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>const systemPrompt = `Tu es un assistant de veille spécialisé en sécurité routière pour la Délégation à la Sécurité Routière (DSR) française.</p>
+<p class="p2"><br></p>
+<p class="p1">MISSION : Rechercher et synthétiser les actualités récentes et fiables en sécurité routière.</p>
+<p class="p2"><br></p>
+<p class="p1">SOURCES ACCEPTÉES UNIQUEMENT :</p>
+<p class="p1">- Officielles françaises : securite-routiere.gouv.fr, interieur.gouv.fr, ONISR, Legifrance, CEREMA, Bison Futé</p>
+<p class="p1">- Associatives : Prévention Routière, MAIF Prévention, AXA Prévention, Ligue contre la Violence Routière</p>
+<p class="p1">- EU/International : ETSC, Commission Européenne, OMS/WHO, IRTAD</p>
+<p class="p1">- Presse de référence : Le Monde, AFP, France Info, Le Figaro, RTL, L'Obs</p>
+<p class="p2"><br></p>
+<p class="p1">RÈGLES ABSOLUES :</p>
+<p class="p1">1. Ne jamais inventer de données, statistiques ou URLs</p>
+<p class="p1">2. Ne jamais reproduire plus de 2 phrases d'un article source</p>
+<p class="p1">3. Toujours fournir l'URL réelle et vérifiable de la source</p>
+<p class="p1">4. Exclure : blogs personnels, forums, réseaux sociaux non institutionnels</p>
+<p class="p1">5. Évaluer la fiabilité : "haute" (source officielle/institutionnelle) ou "moyenne" (presse)</p>
+<p class="p2"><br></p>
+<p class="p1">CATÉGORIES disponibles : Actualité, Campagne, Statistiques, Réglementation, Prévention, International</p>
+<p class="p2"><br></p>
+<p class="p1">FORMAT DE RÉPONSE : Retourne UNIQUEMENT un JSON valide, sans texte avant ni après, sans backticks :</p>
+<p class="p1">{</p>
+<p class="p1"><span class="Apple-converted-space">  </span>"articles": [</p>
+<p class="p1"><span class="Apple-converted-space">    </span>{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>"id": "a1",</p>
+<p class="p1"><span class="Apple-converted-space">      </span>"titre": "Titre de l'article",</p>
+<p class="p1"><span class="Apple-converted-space">      </span>"categorie": "Actualité",</p>
+<p class="p1"><span class="Apple-converted-space">      </span>"source": "Nom de la source",</p>
+<p class="p1"><span class="Apple-converted-space">      </span>"source_url": "https://url-reelle.fr/article",</p>
+<p class="p1"><span class="Apple-converted-space">      </span>"date": "15 février 2026",</p>
+<p class="p1"><span class="Apple-converted-space">      </span>"resume": "Résumé factuel en 2 à 3 phrases maximum. Ne jamais copier le texte original.",</p>
+<p class="p1"><span class="Apple-converted-space">      </span>"fiabilite": "haute",</p>
+<p class="p1"><span class="Apple-converted-space">      </span>"featured": false</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>]</p>
+<p class="p1">}`;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>const userPrompt = `Effectue une recherche web sur l'actualité récente en sécurité routière. Date du jour : ${today}.</p>
+<p class="p2"><br></p>
+<p class="p1">Thèmes à couvrir :</p>
+<p class="p1">1. Bilan d'accidentalité récent ou statistiques officielles (ONISR, bilan mensuel ou annuel)</p>
+<p class="p1">2. Campagnes gouvernementales ou associatives actuellement en cours ou récentes</p>
+<p class="p1">3. Évolutions législatives ou réglementaires (vitesse, alcool au volant, stupéfiants, téléphone au volant)</p>
+<p class="p1">4. Technologies routières et infrastructures (radars, signalisation, aménagements, véhicules autonomes)</p>
+<p class="p1">5. Actualités européennes et internationales (ETSC, OMS, bilan européen)</p>
+<p class="p1">6. Faits marquants ou événements importants liés à la sécurité routière</p>
+<p class="p2"><br></p>
+<p class="p1">Retourne entre 8 et 12 articles fiables et récents au format JSON demandé.</p>
+<p class="p1">Marque featured:true pour l'article le plus important ou le plus récent.`;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>try {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const res = await fetch('https://api.anthropic.com/v1/messages', {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>method: 'POST',</p>
+<p class="p1"><span class="Apple-converted-space">      </span>headers: {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>'Content-Type': 'application/json',</p>
+<p class="p1"><span class="Apple-converted-space">        </span>'x-api-key': API_KEY,</p>
+<p class="p1"><span class="Apple-converted-space">        </span>'anthropic-version': '2023-06-01',</p>
+<p class="p1"><span class="Apple-converted-space">        </span>'anthropic-dangerous-direct-browser-access': 'true'</p>
+<p class="p1"><span class="Apple-converted-space">      </span>},</p>
+<p class="p1"><span class="Apple-converted-space">      </span>body: JSON.stringify({</p>
+<p class="p1"><span class="Apple-converted-space">        </span>model: 'claude-sonnet-4-5-20250929',</p>
+<p class="p1"><span class="Apple-converted-space">        </span>max_tokens: 4096,</p>
+<p class="p1"><span class="Apple-converted-space">        </span>system: systemPrompt,</p>
+<p class="p1"><span class="Apple-converted-space">        </span>tools: [{ type: 'web_search_20250305', name: 'web_search' }],</p>
+<p class="p1"><span class="Apple-converted-space">        </span>messages: [{ role: 'user', content: userPrompt }]</p>
+<p class="p1"><span class="Apple-converted-space">      </span>})</p>
+<p class="p1"><span class="Apple-converted-space">    </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>if (!res.ok) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const e = await res.json().catch(() =&gt; ({}));</p>
+<p class="p1"><span class="Apple-converted-space">      </span>throw new Error(e.error?.message || `Erreur HTTP ${res.status}`);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>const data = await res.json();</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// Extraire le texte de la réponse</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const text = (data.content || [])</p>
+<p class="p1"><span class="Apple-converted-space">      </span>.filter(b =&gt; b.type === 'text')</p>
+<p class="p1"><span class="Apple-converted-space">      </span>.map(b =&gt; b.text)</p>
+<p class="p1"><span class="Apple-converted-space">      </span>.join('');</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// Parser le JSON</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const m = text.match(/\{[\s\S]*"articles"[\s\S]*\}/);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>if (!m) throw new Error('Aucun JSON trouvé dans la réponse');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const parsed = JSON.parse(m[0]);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>if (!Array.isArray(parsed.articles)) throw new Error('Format de réponse invalide');</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>allArticles = parsed.articles;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>renderArticles();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>updateCounts();</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>const hm = new Date().toLocaleTimeString('fr-FR', {hour: '2-digit', minute: '2-digit'});</p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById('last-sync').textContent = hm;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById('art-count').textContent = allArticles.length;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>toast(`<span class="s1">✅</span> ${allArticles.length} articles collectés · ${hm}`);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>} catch(err) {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById('contentArea').innerHTML = `</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="err"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;strong&gt;<span class="s1">❌</span> Erreur de collecte&lt;/strong&gt;&lt;br/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>${esc(err.message)}&lt;br/&gt;&lt;br/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>Vérifiez votre clé API et votre connexion internet, puis réessayez.</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="empty"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="ei"&gt;<span class="s1">⚠️</span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="et"&gt;Connexion interrompue&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="es"&gt;Cliquez sur Actualiser pour réessayer&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>console.error(err);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>} finally {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>btn.disabled = false;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>btn.innerHTML = '<span class="s1">⚡</span> Actualiser le fil';</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p3"><span class="s3">/* </span>═══════════════════════════════════════</p>
+<p class="p1"><span class="Apple-converted-space">   </span>RENDU DES ARTICLES</p>
+<p class="p3">═══════════════════════════════════════<span class="s3"> */</span></p>
+<p class="p1">function renderArticles() {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const q = (document.getElementById('searchInput').value || '').toLowerCase();</p>
+<p class="p1"><span class="Apple-converted-space">  </span>let arts = allArticles;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>if (currentCat !== 'Tous') arts = arts.filter(a =&gt; a.categorie === currentCat);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if (q) arts = arts.filter(a =&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>[(a.titre||''), (a.resume||''), (a.source||'')].join(' ').toLowerCase().includes(q)</p>
+<p class="p1"><span class="Apple-converted-space">  </span>);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById('toolbar-count').textContent = `${arts.length} article(s)`;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById('toolbar-title').textContent = currentCat === 'Tous' ? "Fil d'information" : currentCat;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>const area = document.getElementById('contentArea');</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>if (!arts.length) {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>area.innerHTML = `</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="empty"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="ei"&gt;<span class="s1">🔍</span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="et"&gt;Aucun résultat&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="es"&gt;Modifiez votre recherche ou changez de catégorie&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>return;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>// Article "À la une" en premier</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const sorted = [...arts.filter(a =&gt; a.featured), ...arts.filter(a =&gt; !a.featured)];</p>
+<p class="p1"><span class="Apple-converted-space">  </span>area.innerHTML = `&lt;div class="cg"&gt;${sorted.map((a, i) =&gt; cardHTML(a, i === 0 &amp;&amp; !!a.featured)).join('')}&lt;/div&gt;`;</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p3"><span class="s3">/* </span>═══════════════════════════════════════</p>
+<p class="p1"><span class="Apple-converted-space">   </span>GÉNÉRATION D'UNE CARTE</p>
+<p class="p3">═══════════════════════════════════════<span class="s3"> */</span></p>
+<p class="p1">const CAT_BADGE = {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>Actualité:'ba', Campagne:'bc', Statistiques:'bs',</p>
+<p class="p1"><span class="Apple-converted-space">  </span>Réglementation:'br', International:'bi', Prévention:'bp'</p>
+<p class="p1">};</p>
+<p class="p1">const CAT_ICON = {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>Actualité:'<span class="s1">📰</span>', Campagne:'<span class="s1">📢</span>', Statistiques:'<span class="s1">📊</span>',</p>
+<p class="p1"><span class="Apple-converted-space">  </span>Réglementation:'<span class="s1">⚖️</span>', International:'<span class="s1">🌍</span>', Prévention:'<span class="s1">🎗</span>'</p>
+<p class="p1">};</p>
+<p class="p2"><br></p>
+<p class="p1">function cardHTML(a, feat) {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const bcls = CAT_BADGE[a.categorie] || 'ba';</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const bico = CAT_ICON[a.categorie] || '<span class="s1">📌</span>';</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const relHTML = a.fiabilite === 'haute'</p>
+<p class="p1"><span class="Apple-converted-space">    </span>? '&lt;div class="rel rh"&gt;&lt;span class="rd"&gt;&lt;/span&gt;Source fiable&lt;/div&gt;'</p>
+<p class="p1"><span class="Apple-converted-space">    </span>: '&lt;div class="rel rm2"&gt;&lt;span class="rd"&gt;&lt;/span&gt;À vérifier&lt;/div&gt;';</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const hasUrl = (a.source_url || '').startsWith('http');</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>return `</p>
+<p class="p1">&lt;div class="card ${feat ? 'cf' : ''}" data-cat="${esc(a.categorie)}"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>${feat ? '&lt;div class="fbadge"&gt;<span class="s1">⭐</span> À la une&lt;/div&gt;' : ''}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="ctop"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="bdgs"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;span class="badge ${bcls}"&gt;${bico} ${esc(a.categorie)}&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;span class="badge bsrc"&gt;${esc(a.source)}&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;span class="cdt"&gt;${esc(a.date || today)}&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="cttl"&gt;${esc(a.titre)}&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="csum"&gt;${esc(a.resume)}&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="cft"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div style="display:flex;flex-direction:column;gap:.26rem"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="sch"&gt;<span class="s1">🔗</span> &lt;strong&gt;${esc(a.source)}&lt;/strong&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>${relHTML}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>${hasUrl</p>
+<p class="p1"><span class="Apple-converted-space">      </span>? `&lt;a href="${esc(a.source_url)}" target="_blank" rel="noopener noreferrer" class="clink"&gt;Lire l'article <span class="s2">→</span>&lt;/a&gt;`</p>
+<p class="p1"><span class="Apple-converted-space">      </span>: '&lt;span class="clink dis"&gt;Source non dispo&lt;/span&gt;'</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p1">&lt;/div&gt;`;</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p3"><span class="s3">/* </span>═══════════════════════════════════════</p>
+<p class="p1"><span class="Apple-converted-space">   </span>FILTRES</p>
+<p class="p3">═══════════════════════════════════════<span class="s3"> */</span></p>
+<p class="p1">function filterCat(cat) {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>currentCat = cat;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>document.querySelectorAll('.nb').forEach(b =&gt; b.classList.remove('active'));</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const map = {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>Tous:'tous', Actualité:'actu', Campagne:'camp',</p>
+<p class="p1"><span class="Apple-converted-space">    </span>Statistiques:'stat', Réglementation:'regl', Prévention:'prev', International:'intl'</p>
+<p class="p1"><span class="Apple-converted-space">  </span>};</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const el = document.getElementById('nav-' + (map[cat] || 'tous'));</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if (el) el.classList.add('active');</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if (allArticles.length) renderArticles();</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">function filterSearch() {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if (allArticles.length) renderArticles();</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p3"><span class="s3">/* </span>═══════════════════════════════════════</p>
+<p class="p1"><span class="Apple-converted-space">   </span>COMPTEURS</p>
+<p class="p3">═══════════════════════════════════════<span class="s3"> */</span></p>
+<p class="p1">function updateCounts() {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const c = cat =&gt; allArticles.filter(a =&gt; a.categorie === cat).length;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById('nc-tous').textContent <span class="Apple-converted-space">  </span>= allArticles.length;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById('nc-actu').textContent <span class="Apple-converted-space">  </span>= c('Actualité');</p>
+<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById('nc-camp').textContent <span class="Apple-converted-space">  </span>= c('Campagne');</p>
+<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById('nc-stat').textContent <span class="Apple-converted-space">  </span>= c('Statistiques');</p>
+<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById('nc-regl').textContent <span class="Apple-converted-space">  </span>= c('Réglementation');</p>
+<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById('nc-prev').textContent <span class="Apple-converted-space">  </span>= c('Prévention');</p>
+<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById('nc-intl').textContent <span class="Apple-converted-space">  </span>= c('International');</p>
+<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById('sw-actu').textContent <span class="Apple-converted-space">  </span>= c('Actualité');</p>
+<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById('sw-camp').textContent <span class="Apple-converted-space">  </span>= c('Campagne');</p>
+<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById('sw-stat').textContent <span class="Apple-converted-space">  </span>= c('Statistiques');</p>
+<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById('sw-regl').textContent <span class="Apple-converted-space">  </span>= c('Réglementation');</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p3"><span class="s3">/* </span>═══════════════════════════════════════</p>
+<p class="p1"><span class="Apple-converted-space">   </span>SQUELETTES DE CHARGEMENT</p>
+<p class="p3">═══════════════════════════════════════<span class="s3"> */</span></p>
+<p class="p1">function showSkeleton() {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const sk = d =&gt; `</p>
+<p class="p1">&lt;div class="skc" style="animation-delay:${d}s"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div style="display:flex;gap:.5rem;margin-bottom:.82rem"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="sk" style="width:27%;height:20px;border-radius:100px"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="sk" style="width:19%;height:20px;border-radius:100px"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="sk" style="width:80%;height:18px;margin-bottom:.55rem"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="sk" style="width:56%;height:12px;margin-bottom:.35rem"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="sk" style="width:72%;height:12px;margin-bottom:.35rem"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="sk" style="width:41%;height:12px"&gt;&lt;/div&gt;</p>
+<p class="p1">&lt;/div&gt;`;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById('contentArea').innerHTML = `</p>
+<p class="p1">&lt;div class="lwrap"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="dots"&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="lmsg"&gt;<span class="s1">🔍</span> Recherche en cours sur les sources officielles…&lt;/div&gt;</p>
+<p class="p1">&lt;/div&gt;</p>
+<p class="p1">&lt;div class="cg"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>${[0, 0.07, 0.14, 0.21].map(sk).join('')}</p>
+<p class="p1">&lt;/div&gt;`;</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p3"><span class="s3">/* </span>═══════════════════════════════════════</p>
+<p class="p1"><span class="Apple-converted-space">   </span>UTILITAIRES</p>
+<p class="p3">═══════════════════════════════════════<span class="s3"> */</span></p>
+<p class="p1">function esc(s) {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>return (s || '')</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.replace(/&amp;/g, '&amp;amp;')</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.replace(/&lt;/g, '&amp;lt;')</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.replace(/&gt;/g, '&amp;gt;')</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.replace(/"/g, '&amp;quot;');</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">function toast(msg) {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const t = document.createElement('div');</p>
+<p class="p1"><span class="Apple-converted-space">  </span>t.className = 'toast';</p>
+<p class="p1"><span class="Apple-converted-space">  </span>t.textContent = msg;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>document.body.appendChild(t);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>setTimeout(() =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>t.style.cssText += 'opacity:0;transition:opacity .3s';</p>
+<p class="p1"><span class="Apple-converted-space">    </span>setTimeout(() =&gt; t.remove(), 300);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}, 3200);</p>
+<p class="p1">}</p>
+<p class="p1">&lt;/script&gt;</p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
