@@ -74,6 +74,8 @@ main{max-width:1280px;margin:1.8rem auto;padding:0 2rem 5rem;display:grid;grid-t
 .btn:hover{background:#0041a8;transform:translateY(-1px);box-shadow:var(--shm)}
 .btn:active{transform:translateY(0)}
 .btn:disabled{opacity:.5;cursor:not-allowed;transform:none;box-shadow:none}
+.btn-nl{background:#00826b}
+.btn-nl:hover{background:#006b58}
 .spin{animation:sp 1s linear infinite;display:inline-block}
 @keyframes sp{to{transform:rotate(360deg)}}
 .cg{display:flex;flex-direction:column;gap:.9rem}
@@ -164,6 +166,39 @@ main{max-width:1280px;margin:1.8rem auto;padding:0 2rem 5rem;display:grid;grid-t
 footer{background:var(--g4);color:rgba(255,255,255,.56);text-align:center;padding:1.4rem 2rem;font-size:.73rem;line-height:1.9}
 footer strong{color:rgba(255,255,255,.9)}
 .toast{position:fixed;bottom:2rem;right:2rem;background:var(--g4);color:#fff;padding:.7rem 1.1rem;border-radius:var(--r);font-size:.81rem;font-weight:500;box-shadow:var(--shl);z-index:9999;animation:fu .3s ease;max-width:320px}
+
+/* BANNIÈRE NL */
+.nl-banner{background:linear-gradient(135deg,#00826b,#005e4e);border-radius:var(--rm);padding:1.1rem 1.4rem;margin-bottom:1.4rem;display:none;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.nl-banner.visible{display:flex}
+.nl-banner-txt{color:#fff}
+.nl-banner-txt strong{display:block;font-size:.95rem;margin-bottom:.2rem}
+.nl-banner-txt span{font-size:.78rem;opacity:.82}
+.nl-banner-btns{display:flex;gap:.5rem;flex-shrink:0}
+.btn-nl-gen{display:inline-flex;align-items:center;gap:.4rem;background:#fff;color:#00826b;border:none;border-radius:100px;padding:.46rem 1.1rem;font-family:var(--f);font-size:.81rem;font-weight:700;cursor:pointer;transition:var(--tr)}
+.btn-nl-gen:hover{background:#f0fdf9;transform:translateY(-1px)}
+.btn-nl-gen:disabled{opacity:.55;cursor:not-allowed;transform:none}
+
+/* MODAL NL */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:200;display:none;align-items:center;justify-content:center;padding:1.5rem}
+.modal-overlay.open{display:flex}
+.modal{background:#fff;border-radius:var(--rm);width:100%;max-width:780px;max-height:90vh;display:flex;flex-direction:column;box-shadow:var(--shl);overflow:hidden}
+.modal-head{display:flex;align-items:center;justify-content:space-between;padding:1.1rem 1.4rem;border-bottom:1.5px solid var(--g1);flex-shrink:0}
+.modal-head-l{display:flex;flex-direction:column;gap:.2rem}
+.modal-head h2{font-size:1rem;font-weight:700;color:var(--g4)}
+.modal-head p{font-size:.76rem;color:var(--g3)}
+.modal-head-r{display:flex;gap:.5rem;align-items:center}
+.btn-copy{display:inline-flex;align-items:center;gap:.38rem;background:var(--green);color:#fff;border:none;border-radius:100px;padding:.4rem 1rem;font-family:var(--f);font-size:.78rem;font-weight:700;cursor:pointer;transition:var(--tr)}
+.btn-copy:hover{background:#006b58}
+.btn-copy.copied{background:#003189}
+.btn-close{width:32px;height:32px;border-radius:50%;border:1.5px solid var(--g1);background:transparent;font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--g3);transition:var(--tr)}
+.btn-close:hover{background:var(--g0)}
+.modal-tabs{display:flex;gap:0;border-bottom:1.5px solid var(--g1);flex-shrink:0}
+.tab{padding:.6rem 1.2rem;font-family:var(--f);font-size:.8rem;font-weight:600;border:none;background:transparent;color:var(--g3);cursor:pointer;border-bottom:2.5px solid transparent;margin-bottom:-1.5px;transition:var(--tr)}
+.tab.active{color:var(--blue);border-bottom-color:var(--blue)}
+.modal-body{flex:1;overflow-y:auto;padding:1.2rem 1.4rem}
+.nl-preview{font-family:'Georgia',serif;line-height:1.7}
+.nl-code{font-family:'Courier New',monospace;font-size:.75rem;background:var(--g0);border-radius:var(--r);padding:1rem;white-space:pre-wrap;word-break:break-all;line-height:1.6;color:var(--g4)}
+.modal-gen-loading{display:flex;flex-direction:column;align-items:center;padding:3rem;gap:.8rem;color:var(--g3);font-size:.85rem}
 </style>
 </head>
 <body>
@@ -181,7 +216,7 @@ footer strong{color:rgba(255,255,255,.9)}
     <div class="hl">
       <div class="eyebrow"><span class="dot-live"></span>Veille active — Temps réel</div>
       <h1>Hub Sécurité<br/><span>Routière</span></h1>
-      <p>Agrégation intelligente des actualités, campagnes et données officielles. Sources institutionnelles uniquement — droits d'auteur respectés, sources toujours citées.</p>
+      <p>Agrégation intelligente des actualités, campagnes et données officielles. Sources institutionnelles uniquement — droits d'auteur respectés.</p>
       <div class="hstats">
         <div class="spill"><strong>12+</strong><small>Sources</small></div>
         <div class="spill"><strong id="art-count">0</strong><small>Articles</small></div>
@@ -211,10 +246,21 @@ footer strong{color:rgba(255,255,255,.9)}
   <section>
     <div class="apn" id="apiNotice">
       <h3>🔑 Clé API Anthropic requise</h3>
-      <p>Ce hub utilise Claude AI + recherche web en temps réel. Saisissez votre clé API Anthropic pour activer la collecte automatique d'actualités vérifiées. Elle sera mémorisée dans votre navigateur.</p>
+      <p>Ce hub utilise Claude AI + recherche web en temps réel. Saisissez votre clé API Anthropic pour activer la collecte automatique d'actualités vérifiées.</p>
       <div class="apr">
         <input type="password" id="apiKeyInput" class="api-in" placeholder="sk-ant-api03-..."/>
         <button class="api-btn" onclick="saveApiKey()">✓ Activer</button>
+      </div>
+    </div>
+
+    <!-- BANNIÈRE NEWSLETTER -->
+    <div class="nl-banner" id="nlBanner">
+      <div class="nl-banner-txt">
+        <strong>📨 Newsletter prête à générer</strong>
+        <span id="nlBannerSub">Les articles sont chargés — générez la NL hebdo en un clic</span>
+      </div>
+      <div class="nl-banner-btns">
+        <button class="btn-nl-gen" id="nlBtn" onclick="generateNL()">✦ Générer la newsletter</button>
       </div>
     </div>
 
@@ -258,7 +304,6 @@ footer strong{color:rgba(255,255,255,.9)}
       </div>
       <div class="wfoot"><span class="wfd"></span>Sources institutionnelles uniquement</div>
     </div>
-
     <div class="widget">
       <div class="wh">📈 Tableau de bord</div>
       <div class="wb">
@@ -270,22 +315,19 @@ footer strong{color:rgba(255,255,255,.9)}
         </div>
       </div>
     </div>
-
     <div class="disc">
       <strong>⚖️ Politique éditoriale</strong>
       Extraits courts uniquement · Lien source systématique · Aucune donnée inventée · Sources non vérifiées exclues automatiquement
     </div>
-
     <div class="widget">
       <div class="wh">🤖 Moteur IA</div>
       <div class="wb" style="font-size:.74rem;color:var(--g3);line-height:1.78">
         Propulsé par <strong style="color:var(--g4)">Claude (Anthropic)</strong> avec recherche web temps réel.<br/><br/>
-        Classification thématique, évaluation de fiabilité et résumé éditorial générés automatiquement.<br/><br/>
         <div style="display:flex;flex-direction:column;gap:.26rem">
           <span style="color:var(--green);font-weight:600">✓ Droits d'auteur respectés</span>
           <span style="color:var(--green);font-weight:600">✓ Source originale citée</span>
           <span style="color:var(--green);font-weight:600">✓ Extraits courts uniquement</span>
-          <span style="color:var(--green);font-weight:600">✓ Aucune donnée inventée</span>
+          <span style="color:var(--green);font-weight:600">✓ Newsletter générée en 1 clic</span>
         </div>
       </div>
     </div>
@@ -294,19 +336,53 @@ footer strong{color:rgba(255,255,255,.9)}
 
 <footer>
   <strong>Hub Veille Sécurité Routière</strong> — Usage interne<br/>
-  Délégation à la Sécurité Routière · Propulsé par Claude AI + Recherche Web en temps réel<br/>
-  Résumés éditoriaux courts · Lien source systématique · Droits d'auteur respectés
+  Délégation à la Sécurité Routière · Claude AI + Recherche Web · Droits d'auteur respectés
 </footer>
+
+<!-- MODAL NEWSLETTER -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
+  <div class="modal">
+    <div class="modal-head">
+      <div class="modal-head-l">
+        <h2>📨 Newsletter hebdomadaire — Sécurité Routière</h2>
+        <p id="modalSubtitle">Générée par Claude AI à partir de vos articles</p>
+      </div>
+      <div class="modal-head-r">
+        <button class="btn-copy" id="copyBtn" onclick="copyNL()">📋 Copier le HTML</button>
+        <button class="btn-close" onclick="closeModal()">✕</button>
+      </div>
+    </div>
+    <div class="modal-tabs">
+      <button class="tab active" onclick="switchTab('preview')" id="tab-preview">👁 Aperçu</button>
+      <button class="tab" onclick="switchTab('code')" id="tab-code">💻 Code HTML</button>
+    </div>
+    <div class="modal-body" id="modalBody">
+      <div class="modal-gen-loading">
+        <div class="dots"><span></span><span></span><span></span></div>
+        <div>Génération de la newsletter en cours…</div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <script>
 let API_KEY = '';
 let allArticles = [];
 let currentCat = 'Tous';
+let nlHtmlContent = '';
+let currentTab = 'preview';
 const today = new Date().toLocaleDateString('fr-FR', {day:'numeric', month:'long', year:'numeric'});
+const weekStr = (() => {
+  const d = new Date();
+  const start = new Date(d); start.setDate(d.getDate() - d.getDay() + 1);
+  const end = new Date(start); end.setDate(start.getDate() + 6);
+  return `${start.toLocaleDateString('fr-FR',{day:'numeric',month:'long'})} – ${end.toLocaleDateString('fr-FR',{day:'numeric',month:'long',year:'numeric'})}`;
+})();
 
+/* ── CLÉ API ── */
 function saveApiKey() {
   const v = document.getElementById('apiKeyInput').value.trim();
-  if (!v.startsWith('sk-ant-')) { toast('⚠️ Clé invalide — elle doit commencer par sk-ant-'); return; }
+  if (!v.startsWith('sk-ant-')) { toast('⚠️ Clé invalide — doit commencer par sk-ant-'); return; }
   API_KEY = v;
   try { localStorage.setItem('dsr_hub_key', v); } catch(e) {}
   document.getElementById('apiNotice').style.display = 'none';
@@ -322,6 +398,7 @@ function saveApiKey() {
   document.getElementById('last-sync').textContent = 'Jamais';
 })();
 
+/* ── COLLECTE ARTICLES ── */
 async function fetchNews() {
   if (!API_KEY || !API_KEY.startsWith('sk-ant-')) {
     document.getElementById('apiNotice').style.display = 'block';
@@ -331,63 +408,42 @@ async function fetchNews() {
   btn.disabled = true;
   btn.innerHTML = '<span class="spin">⟳</span> Collecte en cours…';
   showSkeleton();
+  document.getElementById('nlBanner').classList.remove('visible');
 
-  const systemPrompt = `Tu es un assistant de veille spécialisé en sécurité routière pour la Délégation à la Sécurité Routière (DSR) française.
-MISSION : Rechercher et synthétiser les actualités récentes et fiables en sécurité routière.
-SOURCES ACCEPTÉES UNIQUEMENT :
-- Officielles françaises : securite-routiere.gouv.fr, interieur.gouv.fr, ONISR, Legifrance, CEREMA, Bison Futé
-- Associatives : Prévention Routière, MAIF Prévention, AXA Prévention, Ligue contre la Violence Routière
-- EU/International : ETSC, Commission Européenne, OMS/WHO, IRTAD
-- Presse de référence : Le Monde, AFP, France Info, Le Figaro, RTL, L'Obs
-RÈGLES ABSOLUES :
-1. Ne jamais inventer de données, statistiques ou URLs
-2. Ne jamais reproduire plus de 2 phrases d'un article source
-3. Toujours fournir l'URL réelle et vérifiable de la source
-4. Exclure : blogs personnels, forums, réseaux sociaux non institutionnels
-5. Évaluer la fiabilité : "haute" (source officielle) ou "moyenne" (presse)
-CATÉGORIES : Actualité, Campagne, Statistiques, Réglementation, Prévention, International
-RETOURNE UNIQUEMENT un JSON valide, sans texte avant ni après, sans backticks :
-{"articles":[{"id":"a1","titre":"...","categorie":"Actualité","source":"Nom","source_url":"https://url.fr","date":"15 février 2026","resume":"2-3 phrases max.","fiabilite":"haute","featured":false}]}`;
+  const systemPrompt = `Veille sécurité routière pour la DSR française.
+Sources autorisées : securite-routiere.gouv.fr, ONISR, Legifrance, CEREMA, Prévention Routière, ETSC, OMS, AFP, France Info.
+Règles : ne jamais inventer. Max 2 phrases par article. URL réelle obligatoire.
+Fiabilite : "haute" (officiel) ou "moyenne" (presse).
+Catégories : Actualité, Campagne, Statistiques, Réglementation, Prévention, International.
+Réponds UNIQUEMENT en JSON valide sans texte ni backticks :
+{"articles":[{"id":"a1","titre":"...","categorie":"Actualité","source":"...","source_url":"https://...","date":"...","resume":"2 phrases max.","fiabilite":"haute","featured":false}]}`;
 
-  const userPrompt = `Effectue une recherche web sur l'actualité récente en sécurité routière. Date du jour : ${today}.
-Thèmes : bilan accidentalité ONISR, campagnes en cours, évolutions législatives, technologies routières, actualités ETSC/OMS.
-Retourne 8 à 12 articles fiables et récents. Marque featured:true pour le plus important.`;
+  const userPrompt = `Recherche web : actualité sécurité routière du jour (${today}). Retourne 6 articles récents et fiables. featured:true pour le plus important.`;
 
   try {
     const res = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'x-api-key': API_KEY,
-        'anthropic-version': '2023-06-01',
-        'anthropic-dangerous-direct-browser-access': 'true'
-      },
-      body: JSON.stringify({
-        model: 'claude-sonnet-4-5-20250929',
-        max_tokens: 4096,
-        system: systemPrompt,
-        tools: [{ type: 'web_search_20250305', name: 'web_search' }],
-        messages: [{ role: 'user', content: userPrompt }]
-      })
+      headers: {'Content-Type':'application/json','x-api-key':API_KEY,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
+      body: JSON.stringify({model:'claude-sonnet-4-5-20250929',max_tokens:2048,system:systemPrompt,tools:[{type:'web_search_20250305',name:'web_search'}],messages:[{role:'user',content:userPrompt}]})
     });
-    if (!res.ok) { const e = await res.json().catch(()=>({})); throw new Error(e.error?.message || `Erreur HTTP ${res.status}`); }
+    if (!res.ok) { const e = await res.json().catch(()=>({})); throw new Error(e.error?.message||`HTTP ${res.status}`); }
     const data = await res.json();
-    const text = (data.content || []).filter(b => b.type === 'text').map(b => b.text).join('');
+    const text = (data.content||[]).filter(b=>b.type==='text').map(b=>b.text).join('');
     const m = text.match(/\{[\s\S]*"articles"[\s\S]*\}/);
-    if (!m) throw new Error('Aucun JSON trouvé dans la réponse');
+    if (!m) throw new Error('JSON introuvable');
     const parsed = JSON.parse(m[0]);
-    if (!Array.isArray(parsed.articles)) throw new Error('Format de réponse invalide');
+    if (!Array.isArray(parsed.articles)) throw new Error('Format invalide');
     allArticles = parsed.articles;
     renderArticles();
     updateCounts();
-    const hm = new Date().toLocaleTimeString('fr-FR', {hour:'2-digit', minute:'2-digit'});
+    const hm = new Date().toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'});
     document.getElementById('last-sync').textContent = hm;
     document.getElementById('art-count').textContent = allArticles.length;
+    document.getElementById('nlBannerSub').textContent = `${allArticles.length} articles chargés — semaine du ${weekStr}`;
+    document.getElementById('nlBanner').classList.add('visible');
     toast(`✅ ${allArticles.length} articles collectés · ${hm}`);
   } catch(err) {
-    document.getElementById('contentArea').innerHTML = `
-      <div class="err"><strong>❌ Erreur de collecte</strong><br/>${esc(err.message)}<br/><br/>Vérifiez votre clé API et réessayez.</div>
-      <div class="empty"><div class="ei">⚠️</div><div class="et">Connexion interrompue</div><div class="es">Cliquez sur Actualiser pour réessayer</div></div>`;
+    document.getElementById('contentArea').innerHTML = `<div class="err"><strong>❌ Erreur</strong><br/>${esc(err.message)}</div><div class="empty"><div class="ei">⚠️</div><div class="et">Connexion interrompue</div><div class="es">Réessayez</div></div>`;
     console.error(err);
   } finally {
     btn.disabled = false;
@@ -395,109 +451,173 @@ Retourne 8 à 12 articles fiables et récents. Marque featured:true pour le plus
   }
 }
 
+/* ── GÉNÉRATION NEWSLETTER ── */
+async function generateNL() {
+  if (!allArticles.length) { toast('⚠️ Actualisez le fil d\'abord'); return; }
+  const btn = document.getElementById('nlBtn');
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spin">⟳</span> Génération…';
+  openModal();
+
+  const articlesData = allArticles.map(a =>
+    `[${a.categorie}] ${a.titre} (${a.source}) — ${a.resume} — URL: ${a.source_url}`
+  ).join('\n');
+
+  const prompt = `Tu es rédacteur d'une newsletter professionnelle en sécurité routière pour la Délégation à la Sécurité Routière (DSR) française.
+
+Génère une newsletter hebdomadaire HTML complète, moderne et professionnelle à partir de ces articles :
+
+${articlesData}
+
+Semaine : ${weekStr}
+
+INSTRUCTIONS HTML :
+- Email HTML compatible Mailchimp/Brevo (inline CSS, max-width 600px, fond blanc)
+- En-tête bleu marine (#003189) avec titre "Veille Sécurité Routière" et la date
+- Introduction éditoriale courte (2-3 phrases, ton institutionnel)
+- Une section par article : titre cliquable (lien source), catégorie badge coloré, résumé court
+- Footer avec mention DSR et lien de désabonnement placeholder
+- Style épuré, lisible sur mobile
+- RETOURNE UNIQUEMENT le code HTML complet, sans texte avant ni après, sans backticks`;
+
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json','x-api-key':API_KEY,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
+      body: JSON.stringify({model:'claude-sonnet-4-5-20250929',max_tokens:3000,messages:[{role:'user',content:prompt}]})
+    });
+    if (!res.ok) { const e = await res.json().catch(()=>({})); throw new Error(e.error?.message||`HTTP ${res.status}`); }
+    const data = await res.json();
+    const html = (data.content||[]).filter(b=>b.type==='text').map(b=>b.text).join('').trim();
+    nlHtmlContent = html;
+    document.getElementById('modalSubtitle').textContent = `Semaine du ${weekStr} · ${allArticles.length} articles`;
+    renderModal();
+    toast('✅ Newsletter générée — vérifiez et copiez le HTML');
+  } catch(err) {
+    document.getElementById('modalBody').innerHTML = `<div class="err"><strong>❌ Erreur</strong><br/>${esc(err.message)}</div>`;
+    console.error(err);
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = '✦ Générer la newsletter';
+  }
+}
+
+/* ── MODAL ── */
+function openModal() {
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  document.getElementById('modalBody').innerHTML = `<div class="modal-gen-loading"><div class="dots"><span></span><span></span><span></span></div><div>Rédaction de la newsletter par Claude…</div></div>`;
+}
+
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function closeModalOutside(e) {
+  if (e.target === document.getElementById('modalOverlay')) closeModal();
+}
+
+function renderModal() {
+  if (currentTab === 'preview') {
+    document.getElementById('modalBody').innerHTML = `<iframe srcdoc="${nlHtmlContent.replace(/"/g,'&quot;')}" style="width:100%;height:500px;border:none;border-radius:var(--r)"></iframe>`;
+  } else {
+    document.getElementById('modalBody').innerHTML = `<div class="nl-code">${esc(nlHtmlContent)}</div>`;
+  }
+}
+
+function switchTab(tab) {
+  currentTab = tab;
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('tab-' + tab).classList.add('active');
+  if (nlHtmlContent) renderModal();
+}
+
+async function copyNL() {
+  if (!nlHtmlContent) return;
+  try {
+    await navigator.clipboard.writeText(nlHtmlContent);
+    const btn = document.getElementById('copyBtn');
+    btn.classList.add('copied');
+    btn.textContent = '✅ Copié !';
+    setTimeout(() => { btn.classList.remove('copied'); btn.innerHTML = '📋 Copier le HTML'; }, 2500);
+    toast('✅ HTML copié — collez-le dans Brevo ou Mailchimp');
+  } catch(e) {
+    toast('⚠️ Copiez manuellement depuis l\'onglet "Code HTML"');
+  }
+}
+
+/* ── RENDU ARTICLES ── */
 function renderArticles() {
-  const q = (document.getElementById('searchInput').value || '').toLowerCase();
+  const q = (document.getElementById('searchInput').value||'').toLowerCase();
   let arts = allArticles;
   if (currentCat !== 'Tous') arts = arts.filter(a => a.categorie === currentCat);
   if (q) arts = arts.filter(a => [(a.titre||''),(a.resume||''),(a.source||'')].join(' ').toLowerCase().includes(q));
   document.getElementById('toolbar-count').textContent = `${arts.length} article(s)`;
   document.getElementById('toolbar-title').textContent = currentCat === 'Tous' ? "Fil d'information" : currentCat;
   const area = document.getElementById('contentArea');
-  if (!arts.length) {
-    area.innerHTML = '<div class="empty"><div class="ei">🔍</div><div class="et">Aucun résultat</div><div class="es">Modifiez votre recherche ou changez de catégorie</div></div>';
-    return;
-  }
-  const sorted = [...arts.filter(a => a.featured), ...arts.filter(a => !a.featured)];
-  area.innerHTML = `<div class="cg">${sorted.map((a,i) => cardHTML(a, i===0 && !!a.featured)).join('')}</div>`;
+  if (!arts.length) { area.innerHTML = '<div class="empty"><div class="ei">🔍</div><div class="et">Aucun résultat</div></div>'; return; }
+  const sorted = [...arts.filter(a=>a.featured),...arts.filter(a=>!a.featured)];
+  area.innerHTML = `<div class="cg">${sorted.map((a,i)=>cardHTML(a,i===0&&!!a.featured)).join('')}</div>`;
 }
 
 const CAT_BADGE = {Actualité:'ba',Campagne:'bc',Statistiques:'bs',Réglementation:'br',International:'bi',Prévention:'bp'};
 const CAT_ICON  = {Actualité:'📰',Campagne:'📢',Statistiques:'📊',Réglementation:'⚖️',International:'🌍',Prévention:'🎗'};
 
 function cardHTML(a, feat) {
-  const bcls = CAT_BADGE[a.categorie] || 'ba';
-  const bico = CAT_ICON[a.categorie]  || '📌';
-  const relHTML = a.fiabilite === 'haute'
-    ? '<div class="rel rh"><span class="rd"></span>Source fiable</div>'
-    : '<div class="rel rm2"><span class="rd"></span>À vérifier</div>';
-  const hasUrl = (a.source_url || '').startsWith('http');
+  const bcls = CAT_BADGE[a.categorie]||'ba', bico = CAT_ICON[a.categorie]||'📌';
+  const relHTML = a.fiabilite==='haute' ? '<div class="rel rh"><span class="rd"></span>Source fiable</div>' : '<div class="rel rm2"><span class="rd"></span>À vérifier</div>';
+  const hasUrl = (a.source_url||'').startsWith('http');
   return `<div class="card ${feat?'cf':''}" data-cat="${esc(a.categorie)}">
-  ${feat ? '<div class="fbadge">⭐ À la une</div>' : ''}
-  <div class="ctop">
-    <div class="bdgs">
-      <span class="badge ${bcls}">${bico} ${esc(a.categorie)}</span>
-      <span class="badge bsrc">${esc(a.source)}</span>
-    </div>
-    <span class="cdt">${esc(a.date || today)}</span>
-  </div>
+  ${feat?'<div class="fbadge">⭐ À la une</div>':''}
+  <div class="ctop"><div class="bdgs"><span class="badge ${bcls}">${bico} ${esc(a.categorie)}</span><span class="badge bsrc">${esc(a.source)}</span></div><span class="cdt">${esc(a.date||today)}</span></div>
   <div class="cttl">${esc(a.titre)}</div>
   <div class="csum">${esc(a.resume)}</div>
-  <div class="cft">
-    <div style="display:flex;flex-direction:column;gap:.26rem">
-      <div class="sch">🔗 <strong>${esc(a.source)}</strong></div>
-      ${relHTML}
-    </div>
-    ${hasUrl ? `<a href="${esc(a.source_url)}" target="_blank" rel="noopener noreferrer" class="clink">Lire l'article →</a>` : '<span class="clink dis">Source non dispo</span>'}
-  </div>
+  <div class="cft"><div style="display:flex;flex-direction:column;gap:.26rem"><div class="sch">🔗 <strong>${esc(a.source)}</strong></div>${relHTML}</div>${hasUrl?`<a href="${esc(a.source_url)}" target="_blank" rel="noopener noreferrer" class="clink">Lire l'article →</a>`:'<span class="clink dis">Non dispo</span>'}</div>
 </div>`;
 }
 
 function filterCat(cat) {
   currentCat = cat;
-  document.querySelectorAll('.nb').forEach(b => b.classList.remove('active'));
-  const map = {Tous:'tous',Actualité:'actu',Campagne:'camp',Statistiques:'stat',Réglementation:'regl',Prévention:'prev',International:'intl'};
-  const el = document.getElementById('nav-' + (map[cat] || 'tous'));
-  if (el) el.classList.add('active');
-  if (allArticles.length) renderArticles();
+  document.querySelectorAll('.nb').forEach(b=>b.classList.remove('active'));
+  const map={Tous:'tous',Actualité:'actu',Campagne:'camp',Statistiques:'stat',Réglementation:'regl',Prévention:'prev',International:'intl'};
+  const el=document.getElementById('nav-'+(map[cat]||'tous'));
+  if(el) el.classList.add('active');
+  if(allArticles.length) renderArticles();
 }
 
-function filterSearch() { if (allArticles.length) renderArticles(); }
+function filterSearch() { if(allArticles.length) renderArticles(); }
 
 function updateCounts() {
-  const c = cat => allArticles.filter(a => a.categorie === cat).length;
-  document.getElementById('nc-tous').textContent = allArticles.length;
-  document.getElementById('nc-actu').textContent = c('Actualité');
-  document.getElementById('nc-camp').textContent = c('Campagne');
-  document.getElementById('nc-stat').textContent = c('Statistiques');
-  document.getElementById('nc-regl').textContent = c('Réglementation');
-  document.getElementById('nc-prev').textContent = c('Prévention');
-  document.getElementById('nc-intl').textContent = c('International');
-  document.getElementById('sw-actu').textContent = c('Actualité');
-  document.getElementById('sw-camp').textContent = c('Campagne');
-  document.getElementById('sw-stat').textContent = c('Statistiques');
-  document.getElementById('sw-regl').textContent = c('Réglementation');
+  const c = cat => allArticles.filter(a=>a.categorie===cat).length;
+  document.getElementById('nc-tous').textContent=allArticles.length;
+  document.getElementById('nc-actu').textContent=c('Actualité');
+  document.getElementById('nc-camp').textContent=c('Campagne');
+  document.getElementById('nc-stat').textContent=c('Statistiques');
+  document.getElementById('nc-regl').textContent=c('Réglementation');
+  document.getElementById('nc-prev').textContent=c('Prévention');
+  document.getElementById('nc-intl').textContent=c('International');
+  document.getElementById('sw-actu').textContent=c('Actualité');
+  document.getElementById('sw-camp').textContent=c('Campagne');
+  document.getElementById('sw-stat').textContent=c('Statistiques');
+  document.getElementById('sw-regl').textContent=c('Réglementation');
 }
 
 function showSkeleton() {
-  const sk = d => `<div class="skc" style="animation-delay:${d}s">
-  <div style="display:flex;gap:.5rem;margin-bottom:.82rem">
-    <div class="sk" style="width:27%;height:20px;border-radius:100px"></div>
-    <div class="sk" style="width:19%;height:20px;border-radius:100px"></div>
-  </div>
-  <div class="sk" style="width:80%;height:18px;margin-bottom:.55rem"></div>
-  <div class="sk" style="width:56%;height:12px;margin-bottom:.35rem"></div>
-  <div class="sk" style="width:72%;height:12px;margin-bottom:.35rem"></div>
-  <div class="sk" style="width:41%;height:12px"></div>
-</div>`;
-  document.getElementById('contentArea').innerHTML = `
-<div class="lwrap">
-  <div class="dots"><span></span><span></span><span></span></div>
-  <div class="lmsg">🔍 Recherche en cours sur les sources officielles…</div>
-</div>
-<div class="cg">${[0,0.07,0.14,0.21].map(sk).join('')}</div>`;
+  const sk = d=>`<div class="skc" style="animation-delay:${d}s"><div style="display:flex;gap:.5rem;margin-bottom:.82rem"><div class="sk" style="width:27%;height:20px;border-radius:100px"></div><div class="sk" style="width:19%;height:20px;border-radius:100px"></div></div><div class="sk" style="width:80%;height:18px;margin-bottom:.55rem"></div><div class="sk" style="width:56%;height:12px;margin-bottom:.35rem"></div><div class="sk" style="width:72%;height:12px"></div></div>`;
+  document.getElementById('contentArea').innerHTML=`<div class="lwrap"><div class="dots"><span></span><span></span><span></span></div><div class="lmsg">🔍 Recherche sur les sources officielles…</div></div><div class="cg">${[0,.07,.14,.21].map(sk).join('')}</div>`;
 }
 
-function esc(s) {
-  return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-}
+function esc(s) { return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 
 function toast(msg) {
-  const t = document.createElement('div');
-  t.className = 'toast';
-  t.textContent = msg;
+  const t=document.createElement('div'); t.className='toast'; t.textContent=msg;
   document.body.appendChild(t);
-  setTimeout(() => { t.style.cssText += 'opacity:0;transition:opacity .3s'; setTimeout(() => t.remove(), 300); }, 3200);
+  setTimeout(()=>{t.style.cssText+='opacity:0;transition:opacity .3s';setTimeout(()=>t.remove(),300);},3200);
 }
 </script>
 </body>
 </html>
+```
+    ↓
+6. Copier le HTML → coller dans Brevo → Envoyer (3 min)
