@@ -4,30 +4,40 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>Hub Veille — Sécurité Routière</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
 <style>
+/* Police officielle de l'État — Marianne */
+@font-face{font-family:'Marianne';src:url('https://cdn.jsdelivr.net/npm/@gouvfr/dsfr@1.12.1/dist/fonts/Marianne-Light.woff2') format('woff2');font-weight:300;font-style:normal;font-display:swap}
+@font-face{font-family:'Marianne';src:url('https://cdn.jsdelivr.net/npm/@gouvfr/dsfr@1.12.1/dist/fonts/Marianne-Regular.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Marianne';src:url('https://cdn.jsdelivr.net/npm/@gouvfr/dsfr@1.12.1/dist/fonts/Marianne-Medium.woff2') format('woff2');font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:'Marianne';src:url('https://cdn.jsdelivr.net/npm/@gouvfr/dsfr@1.12.1/dist/fonts/Marianne-Bold.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --blue:#003189;--blue-light:#e8edf7;
+  /* Charte DSFR — Système de Design de l'État */
+  --blue:#000091;--blue-light:#ececfd;
   --red:#e1000f;--red-soft:#fde8ea;
-  --white:#fff;--g0:#f5f6fa;--g1:#e8e9ef;--g2:#b0b3c6;--g3:#6b6f8a;--g4:#2d3050;
+  --white:#fff;--g0:#f5f6fa;--g1:#e8e9ef;--g2:#b0b3c6;--g3:#6b6f8a;--g4:#1e1e4b;
   --gold:#d4a017;--green:#00826b;--green-s:#d9f5f0;
-  --sh:0 1px 3px rgba(0,49,137,.08),0 1px 2px rgba(0,49,137,.04);
-  --shm:0 4px 16px rgba(0,49,137,.10),0 2px 6px rgba(0,49,137,.06);
-  --shl:0 12px 40px rgba(0,49,137,.14);
+  --sh:0 1px 3px rgba(0,0,145,.08),0 1px 2px rgba(0,0,145,.04);
+  --shm:0 4px 16px rgba(0,0,145,.12),0 2px 6px rgba(0,0,145,.07);
+  --shl:0 12px 40px rgba(0,0,145,.18);
   --r:6px;--rm:12px;--tr:.2s cubic-bezier(.4,0,.2,1);
-  --f:'Inter',system-ui,sans-serif;
+  --f:'Marianne',system-ui,sans-serif;
 }
 html{font-size:16px;scroll-behavior:smooth}
 body{font-family:var(--f);background:var(--g0);color:var(--g4);min-height:100vh;line-height:1.6}
-.topbar{background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 2rem;height:46px;font-size:.76rem}
+.topbar{background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 2rem;height:50px;font-size:.76rem;border-bottom:3px solid var(--red)}
 .tb-l{display:flex;align-items:center;gap:.9rem}
 .flag{display:flex;gap:2px;overflow:hidden;border-radius:2px}
-.flag span{display:block;width:10px;height:16px}
+.flag span{display:block;width:10px;height:18px}
 .fb{background:#002395}.fw{background:#fff}.fr{background:#ED2939}
-.tb-brand{font-weight:600;letter-spacing:.01em}
-.tb-r{opacity:.65;font-size:.7rem}
-header{background:linear-gradient(135deg,#001a5e 0%,#002d85 45%,#0041a8 100%);color:#fff;padding:2.8rem 2rem 2.4rem;position:relative;overflow:hidden}
+.tb-marque{display:flex;align-items:center;gap:.55rem}
+.tb-brand{font-weight:700;letter-spacing:.01em;font-size:.78rem}
+.tb-sep{opacity:.4;font-weight:300}
+.tb-sub{opacity:.75;font-weight:400;font-size:.73rem}
+.tb-r{display:flex;align-items:center;gap:.9rem}
+.tb-slogan{font-style:italic;font-weight:600;font-size:.75rem;opacity:.9;letter-spacing:.01em}
+.tb-conf{opacity:.5;font-size:.68rem;border-left:1px solid rgba(255,255,255,.25);padding-left:.9rem}
+header{background:linear-gradient(135deg,#00004e 0%,#000091 50%,#1212ff 100%);color:#fff;padding:2.8rem 2rem 2.4rem;position:relative;overflow:hidden}
 header::after{content:'';position:absolute;right:-80px;top:-80px;width:350px;height:350px;border-radius:50%;background:rgba(255,255,255,.03);pointer-events:none}
 .hi{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:2rem}
 .hl{flex:1}
@@ -35,7 +45,7 @@ header::after{content:'';position:absolute;right:-80px;top:-80px;width:350px;hei
 .dot-live{width:7px;height:7px;background:#4ade80;border-radius:50%;animation:lp 2s ease-in-out infinite}
 @keyframes lp{0%,100%{opacity:1}50%{opacity:.3}}
 header h1{font-size:2rem;font-weight:700;line-height:1.15;margin-bottom:.65rem;letter-spacing:-.02em}
-header h1 span{color:#93c5fd}
+header h1 span{color:rgba(255,255,255,.85)}
 header p{font-size:.88rem;opacity:.8;max-width:480px;line-height:1.75}
 .hstats{display:flex;gap:.9rem;margin-top:1.5rem;flex-wrap:wrap}
 .spill{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.14);border-radius:10px;padding:.55rem 1rem;text-align:center}
@@ -69,9 +79,9 @@ main{max-width:1280px;margin:1.8rem auto;padding:0 2rem 5rem;display:grid;grid-t
 .sw{position:relative}
 .si{position:absolute;left:.76rem;top:50%;transform:translateY(-50%);color:var(--g2);font-size:.86rem;pointer-events:none}
 .srch{padding:.48rem .88rem .48rem 2.2rem;border:1.5px solid var(--g1);border-radius:100px;font-family:var(--f);font-size:.81rem;color:var(--g4);background:var(--white);outline:none;width:220px;transition:var(--tr)}
-.srch:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(0,49,137,.09);width:265px}
+.srch:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(0,0,145,.10);width:265px}
 .btn{display:inline-flex;align-items:center;gap:.4rem;background:var(--blue);color:#fff;border:none;border-radius:100px;padding:.48rem 1.1rem;font-family:var(--f);font-size:.81rem;font-weight:700;cursor:pointer;transition:var(--tr);flex-shrink:0}
-.btn:hover{background:#0041a8;transform:translateY(-1px);box-shadow:var(--shm)}
+.btn:hover{background:#1212ff;transform:translateY(-1px);box-shadow:var(--shm)}
 .btn:active{transform:translateY(0)}
 .btn:disabled{opacity:.5;cursor:not-allowed;transform:none;box-shadow:none}
 .btn-nl{background:#00826b}
@@ -111,7 +121,7 @@ main{max-width:1280px;margin:1.8rem auto;padding:0 2rem 5rem;display:grid;grid-t
 .clink{display:inline-flex;align-items:center;gap:.3rem;font-size:.77rem;font-weight:700;color:var(--blue);text-decoration:none;padding:.28rem .8rem;border-radius:100px;border:1.5px solid var(--blue-light);transition:var(--tr);white-space:nowrap}
 .clink:hover{background:var(--blue);color:#fff;border-color:var(--blue)}
 .clink.dis{opacity:.36;pointer-events:none}
-.cf{background:linear-gradient(140deg,#001d6e 0%,var(--blue) 100%);color:#fff;border-color:var(--blue)}
+.cf{background:linear-gradient(140deg,#00004e 0%,var(--blue) 100%);color:#fff;border-color:var(--blue)}
 .cf::before{background:rgba(255,255,255,.32)}
 .cf .cttl{color:#fff;font-size:1.08rem}
 .cf .csum{color:rgba(255,255,255,.8)}
@@ -163,8 +173,9 @@ main{max-width:1280px;margin:1.8rem auto;padding:0 2rem 5rem;display:grid;grid-t
 .wfd{width:6px;height:6px;border-radius:50%;background:var(--green)}
 .disc{background:#fffbeb;border:1px solid #fde68a;border-radius:var(--r);padding:.86rem .98rem;font-size:.73rem;color:#92400e;line-height:1.65}
 .disc strong{display:block;margin-bottom:.26rem}
-footer{background:var(--g4);color:rgba(255,255,255,.56);text-align:center;padding:1.4rem 2rem;font-size:.73rem;line-height:1.9}
-footer strong{color:rgba(255,255,255,.9)}
+footer{background:var(--blue);color:rgba(255,255,255,.7);text-align:center;padding:1.4rem 2rem;font-size:.73rem;line-height:1.9;border-top:4px solid var(--red)}
+footer strong{color:#fff}
+footer .ft-slogan{display:block;font-style:italic;font-size:.8rem;color:rgba(255,255,255,.9);margin-top:.3rem;font-weight:600}
 .toast{position:fixed;bottom:2rem;right:2rem;background:var(--g4);color:#fff;padding:.7rem 1.1rem;border-radius:var(--r);font-size:.81rem;font-weight:500;box-shadow:var(--shl);z-index:9999;animation:fu .3s ease;max-width:320px}
 
 /* BANNIÈRE NL */
@@ -189,7 +200,7 @@ footer strong{color:rgba(255,255,255,.9)}
 .modal-head-r{display:flex;gap:.5rem;align-items:center}
 .btn-copy{display:inline-flex;align-items:center;gap:.38rem;background:var(--green);color:#fff;border:none;border-radius:100px;padding:.4rem 1rem;font-family:var(--f);font-size:.78rem;font-weight:700;cursor:pointer;transition:var(--tr)}
 .btn-copy:hover{background:#006b58}
-.btn-copy.copied{background:#003189}
+.btn-copy.copied{background:#000091}
 .btn-close{width:32px;height:32px;border-radius:50%;border:1.5px solid var(--g1);background:transparent;font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--g3);transition:var(--tr)}
 .btn-close:hover{background:var(--g0)}
 .modal-tabs{display:flex;gap:0;border-bottom:1.5px solid var(--g1);flex-shrink:0}
@@ -206,9 +217,16 @@ footer strong{color:rgba(255,255,255,.9)}
 <div class="topbar">
   <div class="tb-l">
     <div class="flag"><span class="fb"></span><span class="fw"></span><span class="fr"></span></div>
-    <span class="tb-brand">Délégation à la Sécurité Routière — Outil de Veille Informationnelle</span>
+    <div class="tb-marque">
+      <span class="tb-brand">Délégation à la Sécurité Routière</span>
+      <span class="tb-sep">|</span>
+      <span class="tb-sub">Outil de Veille Informationnelle</span>
+    </div>
   </div>
-  <div class="tb-r">Usage interne · Confidentiel</div>
+  <div class="tb-r">
+    <span class="tb-slogan">Vivre, ensemble</span>
+    <span class="tb-conf">Usage interne · Confidentiel</span>
+  </div>
 </div>
 
 <header>
@@ -337,6 +355,7 @@ footer strong{color:rgba(255,255,255,.9)}
 <footer>
   <strong>Hub Veille Sécurité Routière</strong> — Usage interne<br/>
   Délégation à la Sécurité Routière · Claude AI + Recherche Web · Droits d'auteur respectés
+  <span class="ft-slogan">Vivre, ensemble</span>
 </footer>
 
 <!-- MODAL NEWSLETTER -->
@@ -473,7 +492,7 @@ Semaine : ${weekStr}
 
 INSTRUCTIONS HTML :
 - Email HTML compatible Mailchimp/Brevo (inline CSS, max-width 600px, fond blanc)
-- En-tête bleu marine (#003189) avec titre "Veille Sécurité Routière" et la date
+- En-tête bleu France (#000091) avec titre "Veille Sécurité Routière" et la date
 - Introduction éditoriale courte (2-3 phrases, ton institutionnel)
 - Une section par article : titre cliquable (lien source), catégorie badge coloré, résumé court
 - Footer avec mention DSR et lien de désabonnement placeholder
